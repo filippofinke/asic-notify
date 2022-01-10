@@ -61,10 +61,16 @@ fetch(endpoint + MINER)
       let months = Math.floor(roi / 30);
       let days = Math.floor(roi - months * 30);
 
-      message += `\n\n💰 ROI: _${months} months`;
+      message += `\n\n💰 ROI: _${months} month`;
+      if (months > 1) {
+        message += "s";
+      }
 
-      if (days) {
-        message += ` and ${days} days`;
+      if (days > 0) {
+        message += ` and ${days} day`;
+        if (days > 1) {
+          message += "s";
+        }
       }
 
       message += `_`;
