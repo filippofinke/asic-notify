@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const { parse } = require("node-html-parser");
 
 const endpoint = "https://www.asicminervalue.com/miners/";
-const { CHAT_ID, BOT_TOKEN, MINER } = process.env;
+const { CHAT_ID, BOT_TOKEN, MINER, PRICE } = process.env;
 
 if (!CHAT_ID || !BOT_TOKEN || !MINER) {
   console.error("Please set a BOT_TOKEN, CHAT_ID and MINER in your environment!");
@@ -53,6 +53,22 @@ fetch(endpoint + MINER)
     let message = `‎\n*${title}*\n\n📈 Daily: *${daily}*\n📈 Monthly: *${monthly}*\n📈 Yearly: *${yearly}*`;
 
     message = message.replaceAll(",", "'");
+
+    if (PRICE) {
+      daily = parseFloat(daily.replaceAll("$", "").replaceAll(",", ""));
+      let roi = parseFloat(PRICE) / daily;
+
+      let months = Math.floor(roi / 30);
+      let days = Math.floor(roi - months * 30);
+
+      message += `\n\n💰 ROI: _${months} months`;
+
+      if (days) {
+        message += ` and ${days} days`;
+      }
+
+      message += `_`;
+    }
 
     message += `\n‎\n_${today}_`;
 
