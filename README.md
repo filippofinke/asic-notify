@@ -13,7 +13,7 @@ npm install
 ## Usage
 
 ```sh
-BOT_TOKEN=... CHAT_ID=... MINER=... npm run start
+BOT_TOKEN=... CHAT_ID=... MINER=... PRICE=... npm run start
 ```
 
 ## Author
