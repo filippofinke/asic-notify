@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const { parse } = require("node-html-parser");
 
 const endpoint = "https://www.asicminervalue.com/miners/";
-const { CHAT_ID, BOT_TOKEN, MINER, PRICE } = process.env;
+const { CHAT_ID, BOT_TOKEN, MINER, PRICE, PRICE_KVH } = process.env;
 
 if (!CHAT_ID || !BOT_TOKEN || !MINER) {
   console.error("Please set a BOT_TOKEN, CHAT_ID and MINER in your environment!");
