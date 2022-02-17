@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const { parse } = require("node-html-parser");
 
 const endpoint = "https://www.asicminervalue.com/miners/";
-const { CHAT_ID, BOT_TOKEN, MINER, PRICE, PRICE_KVH } = process.env;
+const { CHAT_ID, BOT_TOKEN, MINER, PRICE, PRICE_KWH } = process.env;
 
 if (!CHAT_ID || !BOT_TOKEN || !MINER) {
   console.error("Please set a BOT_TOKEN, CHAT_ID and MINER in your environment!");
@@ -32,7 +32,7 @@ fetch(endpoint + MINER, {
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
   },
-  body: "currency=USD&electricitycost=" + PRICE_KVH,
+  body: "currency=USD&electricitycost=" + PRICE_KWH,
 })
   .then((r) => r.text())
   .then((html) => {
@@ -56,7 +56,7 @@ fetch(endpoint + MINER, {
     }
 
     let electricity = null;
-    if (PRICE_KVH) {
+    if (PRICE_KWH) {
       electricity = dom.querySelector(
         "body > div.container > div:nth-child(2) > div:nth-child(2) > table.table.table-striped.rentability > tbody > tr:nth-child(2)"
       ).childNodes;

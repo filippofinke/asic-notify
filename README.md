@@ -13,8 +13,10 @@ npm install
 ## Usage
 
 ```sh
-BOT_TOKEN=... CHAT_ID=... MINER=... PRICE=... npm run start
+BOT_TOKEN=... CHAT_ID=... MINER=... PRICE=... PRICE_KWH=... npm run start
 ```
+
+where the environment variables ```PRICE``` and ```PRICE_KWH``` are optional.
 
 ## Author
 
